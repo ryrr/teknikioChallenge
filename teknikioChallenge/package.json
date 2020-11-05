@@ -1,0 +1,28 @@
+{
+  "name": "teknikiochallenge",
+  "version": "0.1.0",
+  "description": "The default template project for [nano-react-app](https://github.com/adrianmcli/nano-react-app).",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aphrodite": "^2.4.0",
+    "babel-core": "^6.26.3",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "use-between": "0.0.16"
+  },
+  "devDependencies": {
+    "babel-preset-nano-react-app": "^0.1.0",
+    "parcel": "^2.0.0-nightly.438"
+  },
+  "babel": {
+    "presets": [
+      "nano-react-app"
+    ]
+  },
+  "main": "index.js",
+  "author": "Ryan Rivera"
+}
