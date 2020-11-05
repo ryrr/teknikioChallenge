@@ -3,23 +3,69 @@ import React, { useEffect, useState } from "react";
 import Timer from './Timer.js'
 import Trigger from './Trigger.js'
 import Debug from './Debug.js'
+import { StyleSheet, css } from 'aphrodite';
 
 
 const blockState = () => {
-  const [trigger, setTrigger] = useState(false);
-  const [timer, setTimer] = useState(false);
-  return {
-    trigger, setTrigger, timer, setTimer
-  };
+	const [trigger, setTrigger] = useState(false);
+	const [timer, setTimer] = useState(false);
+	const [connection,setConnection] = useState(true)
+	const [position,setPosition] = useState(1)
+	return {
+		trigger, setTrigger, timer, setTimer, position, setPosition,connection,setConnection
+	};
 };
 
 const useSharedState = () => useBetween(blockState);
 
-export default () => (
-  <>
-    <h1>TEKNIKO blockState</h1>
-    <Trigger sharedState={useSharedState()}></Trigger>
-    <Timer sharedState={useSharedState()}></Timer>
-    <Debug sharedState={useSharedState()}></Debug>
-  </>
-);
+const App = () => {
+	const styles = StyleSheet.create({
+		center:{
+			display:'flex',
+			justifyContent:'center',
+			width:'60%',
+		},
+		left:{
+			display:'flex',
+			justifyContent:'left',
+			width:'60%',
+		},
+		right:{
+			display:'flex',
+			justifyContent:'flex-end',
+			width:'60%',
+		},
+		blockDiv:{
+			display:'flex',
+			flexDirection:'row',
+			justifyContent:'space-between',
+			alignItems:'center',
+			width:'60%',
+			marginBottom:'30px'
+		}
+	})
+	let {connection,setConnection} = useSharedState()
+
+	let getPosition = ()=>{
+		let {position} = useSharedState()
+		if(position === 1){return styles.center}
+		else if(position === 0){return styles.left}
+		else {return styles.right}
+	}
+
+
+	return(
+	  <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center'}}>
+		  <div className={css(styles.blockDiv)}>
+			  <Trigger sharedState={useSharedState()}></Trigger>
+			 {connection?<i onClick={()=>{setConnection(!connection)}}style={{color:'#738283'}}class="fas fa-arrow-circle-right fa-3x"></i>:<i onClick={()=>{setConnection(!connection)}} style={{color:'#738283'}} class="fas fa-times-circle fa-3x"></i>} 
+			  <Timer sharedState={useSharedState()}></Timer>
+		  </div>
+		  <div className={css(getPosition())}>
+			  <Debug sharedState={useSharedState()}></Debug>
+		  </div>
+	  </div>
+	);
+}
+
+export default App

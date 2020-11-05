@@ -8,25 +8,30 @@ let Trigger =(props)=>{
             flexDirection:'column',
             justifyContent:'center',
             alignItems:'center',
-            height:'100px',
-            width:'100px',
-            border:'solid',
-            
+            height: '150px',
+            width:'150px',
+            backgroundColor:'#738283',
+            borderRadius:'10px',
         },
         button:{
-            color:'green',  
+            backgroundColor:'#738283',  
+            borderRadius:'10px',
+            height:'90%',
+            width:'90%',
+            ':focus': {outline:0}
         }
     })
+
     let triggerTheTrigger = () =>{
         let {setTrigger} = props.sharedState
         setTrigger(true)
         const timer = setTimeout(() => {
             setTrigger(false)
-        }, 400);
+        }, 1000);
     }
     return(
         <div className={css(styles.trigger)}>
-            <button onClick={()=>{triggerTheTrigger()}} className={css(styles.button)}>activate</button>
+            <button onClick={()=>{triggerTheTrigger()}} className={css(styles.button)}></button>
         </div>
     )
 }
