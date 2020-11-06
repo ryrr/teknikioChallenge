@@ -43,6 +43,12 @@ const App = () => {
 			alignItems:'center',
 			width:'60%',
 			marginBottom:'30px'
+		},
+		app:{
+			display:'flex',
+			justifyContent:'center',
+			alignItems:'center',
+			flexDirection:'column'
 		}
 	})
 
@@ -53,13 +59,12 @@ const App = () => {
 		else if(position === 0){return styles.left}
 		else {return styles.right}
 	}
-
-	//fix top div style, make icon a function, pass styles to components 
+	
 	return(
-	  <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center'}}>
+	  <div className={css(styles.app)}>
 		  <div className={css(styles.blockDiv)}>
 			  <Trigger sharedState={useSharedState()}></Trigger>
-			 {connection?<i onClick={()=>{setConnection(!connection)}}style={{color:'#738283',cursor:'pointer'}}class="fas fa-arrow-circle-right fa-3x"></i>:<i onClick={()=>{setConnection(!connection)}} style={{color:'#738283',cursor:'pointer'}} class="fas fa-times-circle fa-3x"></i>} 
+			  {connection?<i onClick={()=>{setConnection(!connection)}}style={{color:'#738283',cursor:'pointer'}}class="fas fa-arrow-circle-right fa-3x"></i>:<i onClick={()=>{setConnection(!connection)}} style={{color:'#738283',cursor:'pointer'}} class="fas fa-times-circle fa-3x"></i>} 
 			  <Timer sharedState={useSharedState()}></Timer>
 		  </div>
 		  <div className={css(getPosition())}>

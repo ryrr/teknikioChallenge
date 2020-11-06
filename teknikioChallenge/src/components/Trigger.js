@@ -28,7 +28,7 @@ let Trigger =(props)=>{
         setTrigger(true)
         const timer = setTimeout(() => {
             setTrigger(false)
-        }, 1000);
+        }, 200);
     }
     return(
         <div className={css(styles.trigger)}>
