@@ -1,5 +1,5 @@
 import { StyleSheet, css } from 'aphrodite';
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 let Timer = (props)=>{
     let {setTimer,trigger,connection} = props.sharedState
@@ -58,11 +58,13 @@ let Timer = (props)=>{
             setSeconds(seconds-1)
         }
     }
+
+    //make icons a function
     return (
         <div className={css(styles.timer)}>
-            <i onClick={()=>{incrTime()}} class="fas fa-chevron-up fa-3x"></i>
+            <i onClick={()=>{incrTime()}} class="fas fa-chevron-up fa-3x" style={{cursor:'pointer'}}></i>
             <h1 className={css(styles.seconds)}>{seconds}</h1>
-            <i onClick={()=>{decrTime()}} class="fas fa-chevron-down fa-3x"></i>
+            <i onClick={()=>{decrTime()}} class="fas fa-chevron-down fa-3x" style={{cursor:'pointer'}}></i>
             
         </div>
     )

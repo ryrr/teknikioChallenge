@@ -1,5 +1,5 @@
 import { useBetween } from "use-between";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Timer from './Timer.js'
 import Trigger from './Trigger.js'
 import Debug from './Debug.js'
@@ -19,6 +19,7 @@ const blockState = () => {
 const useSharedState = () => useBetween(blockState);
 
 const App = () => {
+
 	const styles = StyleSheet.create({
 		center:{
 			display:'flex',
@@ -44,21 +45,21 @@ const App = () => {
 			marginBottom:'30px'
 		}
 	})
-	let {connection,setConnection} = useSharedState()
+
+	let {connection,setConnection,position} = useSharedState()
 
 	let getPosition = ()=>{
-		let {position} = useSharedState()
 		if(position === 1){return styles.center}
 		else if(position === 0){return styles.left}
 		else {return styles.right}
 	}
 
-
+	//fix top div style, make icon a function, pass styles to components 
 	return(
 	  <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center'}}>
 		  <div className={css(styles.blockDiv)}>
 			  <Trigger sharedState={useSharedState()}></Trigger>
-			 {connection?<i onClick={()=>{setConnection(!connection)}}style={{color:'#738283'}}class="fas fa-arrow-circle-right fa-3x"></i>:<i onClick={()=>{setConnection(!connection)}} style={{color:'#738283'}} class="fas fa-times-circle fa-3x"></i>} 
+			 {connection?<i onClick={()=>{setConnection(!connection)}}style={{color:'#738283',cursor:'pointer'}}class="fas fa-arrow-circle-right fa-3x"></i>:<i onClick={()=>{setConnection(!connection)}} style={{color:'#738283',cursor:'pointer'}} class="fas fa-times-circle fa-3x"></i>} 
 			  <Timer sharedState={useSharedState()}></Timer>
 		  </div>
 		  <div className={css(getPosition())}>

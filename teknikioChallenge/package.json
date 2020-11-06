@@ -23,6 +23,6 @@
       "nano-react-app"
     ]
   },
-  "main": "index.js",
+  "main": "index.html",
   "author": "Ryan Rivera"
 }

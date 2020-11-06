@@ -1,5 +1,5 @@
 import { StyleSheet, css } from 'aphrodite';
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 let Trigger =(props)=>{
     const styles = StyleSheet.create({
@@ -18,7 +18,8 @@ let Trigger =(props)=>{
             borderRadius:'10px',
             height:'90%',
             width:'90%',
-            ':focus': {outline:0}
+            ':focus': {outline:0},
+            cursor:'pointer'
         }
     })
 
