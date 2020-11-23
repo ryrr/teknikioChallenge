@@ -8,7 +8,7 @@ let Trigger =(props)=>{
             flexDirection:'column',
             justifyContent:'center',
             alignItems:'center',
-            height: '150px',
+            height: '450px',
             width:'150px',
             backgroundColor:'#738283',
             borderRadius:'10px',
