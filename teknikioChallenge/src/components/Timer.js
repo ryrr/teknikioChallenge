@@ -59,13 +59,11 @@ let Timer = (props)=>{
         }
     }
 
-    //make icons a function
     return (
         <div className={css(styles.timer)}>
             <i onClick={()=>{incrTime()}} class="fas fa-chevron-up fa-3x" style={{cursor:'pointer'}}></i>
             <h1 className={css(styles.seconds)}>{seconds}</h1>
             <i onClick={()=>{decrTime()}} class="fas fa-chevron-down fa-3x" style={{cursor:'pointer'}}></i>
-            
         </div>
     )
 }

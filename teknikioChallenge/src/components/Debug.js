@@ -41,17 +41,16 @@ let Debug=(props)=>{
         }
     }
 
-    //clean this crap up 
     if(position===1){
         return(
-        <div className={css(styles.debug)}>
-            <i onClick={()=>{moveLeft()}} class="fas fa-chevron-left fa-3x" style={{cursor:'pointer'}}></i>
-            <div className={css(styles.infoDiv)}>
-                <h2>trigger {trigger.toString()}</h2>
-                <h2>timer {timer.toString()}</h2>
+            <div className={css(styles.debug)}>
+                <i onClick={()=>{moveLeft()}} class="fas fa-chevron-left fa-3x" style={{cursor:'pointer'}}></i>
+                <div className={css(styles.infoDiv)}>
+                    <h2>trigger {trigger.toString()}</h2>
+                    <h2>timer {timer.toString()}</h2>
+                </div>
+                <i onClick={()=>{moveRight()}} class="fas fa-chevron-right fa-3x" style={{cursor:'pointer'}}></i>
             </div>
-            <i onClick={()=>{moveRight()}} class="fas fa-chevron-right fa-3x" style={{cursor:'pointer'}}></i>
-        </div>
         ) 
     }
     else{
