@@ -29272,23 +29272,16 @@ try {
     _s3();
 
     const [didMove, setDidMove] = (0, _react.useState)(false);
+    let {
+      connection,
+      setConnection,
+      position,
+      setPosition,
+      connectionQueue,
+      setConnectionQueue
+    } = useSharedState();
 
     const styles = _aphrodite.StyleSheet.create({
-      center: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '60%'
-      },
-      left: {
-        display: 'flex',
-        justifyContent: 'left',
-        width: '60%'
-      },
-      right: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        width: '60%'
-      },
       blockDiv: {
         display: 'flex',
         flexDirection: 'row',
@@ -29304,14 +29297,6 @@ try {
       }
     });
 
-    let {
-      connection,
-      setConnection,
-      position,
-      setPosition,
-      connectionQueue,
-      setConnectionQueue
-    } = useSharedState();
     (0, _react.useEffect)(() => {
       if (connectionQueue.length == 2) {
         if (connectionQueue.includes('timer') && connectionQueue.includes('trigger')) {
@@ -29344,7 +29329,7 @@ try {
     const debugRef = (0, _react.useRef)(null);
 
     let renderArrows = () => {
-      if (connection && position == 2 || !connection && position == 2) {
+      if (position == 2) {
         return /*#__PURE__*/_react.default.createElement("div", null, connection ? /*#__PURE__*/_react.default.createElement(_reactXarrows.default, {
           start: triggerRef,
           end: timerRef

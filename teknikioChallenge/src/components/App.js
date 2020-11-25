@@ -24,22 +24,9 @@ const useSharedState = () => useBetween(blockState);
 const App = () => {
 	const [didMove, setDidMove] = useState(false);
 
+	let {connection,setConnection,position,setPosition,connectionQueue,setConnectionQueue} = useSharedState()
+
 	const styles = StyleSheet.create({
-		center:{
-			display:'flex',
-			justifyContent:'center',
-			width:'60%',
-		},
-		left:{
-			display:'flex',
-			justifyContent:'left',
-			width:'60%',
-		},
-		right:{
-			display:'flex',
-			justifyContent:'flex-end',
-			width:'60%',
-		},
 		blockDiv:{
 			display:'flex',
 			flexDirection:'row',
@@ -50,13 +37,10 @@ const App = () => {
 		},
 		app:{
 			display:'flex',
-			
 			alignItems:'center',
 			flexDirection:'row'
 		}
 	})
-
-	let {connection,setConnection,position,setPosition,connectionQueue,setConnectionQueue} = useSharedState()
 	
 	useEffect(() => {
 		if(connectionQueue.length == 2){
@@ -88,7 +72,7 @@ const App = () => {
 
 
 	let renderArrows = ()=>{
-		if(connection && position==2 || !connection && position==2){
+		if(position==2){
 			return(
 				<div>
 					{connection?<Xarrow start={triggerRef} end={timerRef}/> : null}
