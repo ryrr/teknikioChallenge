@@ -2,7 +2,7 @@ import { StyleSheet, css } from 'aphrodite';
 import React, { useEffect, useState } from "react";
 
 let Timer = (props)=>{
-    let {setTimer,trigger,connection} = props.sharedState
+    let {setTimer,trigger,connection,connectionQueue,setConnectionQueue} = props.sharedState
     let [seconds,setSeconds] = useState(10)
     const [isActive, setIsActive] = useState(false);
 
@@ -27,6 +27,11 @@ let Timer = (props)=>{
         seconds:{
             fontSize:'40px',
             margin:'0px'
+        },
+        link:{
+            position:"absolute",
+            bottom:'0px',
+            left:'0px'
         }
     })
     useEffect(() => {
@@ -61,9 +66,10 @@ let Timer = (props)=>{
 
     return (
         <div className={css(styles.timer)}>
-            <i onClick={()=>{incrTime()}} class="fas fa-chevron-up fa-3x" style={{cursor:'pointer'}}></i>
+            <i onClick={()=>{incrTime()}} className="fas fa-chevron-up fa-3x" style={{cursor:'pointer'}}></i>
             <h1 className={css(styles.seconds)}>{seconds}</h1>
-            <i onClick={()=>{decrTime()}} class="fas fa-chevron-down fa-3x" style={{cursor:'pointer'}}></i>
+            <i onClick={()=>{decrTime()}} className="fas fa-chevron-down fa-3x" style={{cursor:'pointer'}}></i>
+            <i className="fas fa-link fa-2x" onClick={()=>{setConnectionQueue([...connectionQueue,"timer"])}} style={{position:'absolute',bottom:'0px',left:'0px',color:'#d6d6b1',cursor:"pointer"}}></i>
         </div>
     )
 }

@@ -12,6 +12,8 @@
     "babel-core": "^6.26.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-draggable": "^4.4.3",
+    "react-xarrows": "^1.5.2",
     "use-between": "0.0.16"
   },
   "devDependencies": {
